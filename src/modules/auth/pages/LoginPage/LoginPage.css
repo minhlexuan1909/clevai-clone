@@ -1,0 +1,29 @@
+.login-page {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+.login-page__left-side {
+  height: 100%;
+  width: 60%;
+}
+.login-page__left-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.login-page__right-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 100%;
+}
+@media screen and (max-width: 1200px) {
+  .login-page__left-side {
+    display: none;
+  }
+  .login-page__right-side {
+    width: 100%;
+  }
+}

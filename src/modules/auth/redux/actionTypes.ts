@@ -1,0 +1,7 @@
+export const ACTION_TYPES = {
+  LOGIN: Symbol("LOGIN"),
+  LOGIN_CALLING: Symbol("LOGIN_CALLING"),
+  LOGIN_ERROR: Symbol("LOGIN_ERROR"),
+  LOGIN_SUCCESS: Symbol("LOGIN_SUCCESS"),
+  SET_DATA: Symbol("SET_DATA"),
+};

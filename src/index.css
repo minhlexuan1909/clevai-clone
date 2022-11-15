@@ -13,6 +13,13 @@ code {
 }
 
 @font-face {
+  font-family: "Regular SF Compact Rounded";
+  src: url("https://r73troypb4obj.vcdn.cloud/web/fonts/SF-Compact-Rounded-Regular.ttf")
+    format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
   font-family: "Semibold SF Compact Rounded";
   src: url("https://r73troypb4obj.vcdn.cloud/web/fonts/SF-Compact-Rounded-Semibold.ttf")
     format("truetype");

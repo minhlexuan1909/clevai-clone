@@ -58,16 +58,18 @@ const LoginForm: React.FC = () => {
       </div>
       <div className="login-form__form-wrapper">
         <form className="login-form__form" autoComplete="off">
-          <div className="login-form__form-group">
-            <img
-              className="login-form__error-message-icon"
-              alt="WarningIcon"
-              src="https://r73troypb4obj.vcdn.cloud/picture/icons/login_warning_icon.svg"
-            />
-            <span className="login-form__error-message">
-              Số điện thoại hoặc mật khẩu chưa đúng
-            </span>
-          </div>
+          {loginState === LOGIN_STATE.ERROR && (
+            <div className="login-form__form-group">
+              <img
+                className="login-form__error-message-icon"
+                alt="WarningIcon"
+                src="https://r73troypb4obj.vcdn.cloud/picture/icons/login_warning_icon.svg"
+              />
+              <span className="login-form__error-message">
+                Số điện thoại hoặc mật khẩu chưa đúng
+              </span>
+            </div>
+          )}
           <div className="login-form__form-group">
             <input
               type="text"

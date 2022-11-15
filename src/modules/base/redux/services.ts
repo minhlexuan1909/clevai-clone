@@ -1,7 +1,7 @@
 import axios from "axios";
 
 axios.defaults.baseURL = process.env.REACT_APP_BASE_API_URL;
-const DEFAULT_TIME_OUT = 10 * 1000; //minisecond
+const DEFAULT_TIME_OUT = 30 * 1000; //minisecond
 const defaults = {
   headers: {
     "Content-Type": "application/json",
@@ -22,6 +22,7 @@ const api = (method: any, url: any, variables: any) => {
   return new Promise((resolve, reject) => {
     axios({
       url: url,
+      timeout: DEFAULT_TIME_OUT,
       method,
       params: method === "get" ? variables : undefined,
       data: method !== "get" ? variables : undefined,
@@ -34,7 +35,6 @@ const api = (method: any, url: any, variables: any) => {
       })
       .catch((error) => {
         if (error.response) {
-          console.log(error);
           if (error.response.status === STATUS_CODE.AUTHENTICATE) {
             forceLogout();
           }
@@ -49,6 +49,7 @@ const api = (method: any, url: any, variables: any) => {
 export const STATUS_CODE = {
   AUTHENTICATE: 401,
   NOT_FOUND: 404,
+  INTERNAL_ERROR: 503,
 };
 
 export const initApi = (token: any) => {

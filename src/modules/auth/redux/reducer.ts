@@ -29,7 +29,6 @@ const initState = {
 };
 
 ReducerRegistry.register("auth", (state = initState, action: TAction) => {
-  console.log(action);
   switch (action.type) {
     case ACTION_TYPES.SET_DATA:
       return {
@@ -50,6 +49,11 @@ ReducerRegistry.register("auth", (state = initState, action: TAction) => {
       return {
         ...state,
         state: LOGIN_STATE.ERROR,
+      };
+    case ACTION_TYPES.LOGIN_TIMEOUT:
+      return {
+        ...state,
+        state: LOGIN_STATE.TIMEOUT,
       };
     default:
       return state;

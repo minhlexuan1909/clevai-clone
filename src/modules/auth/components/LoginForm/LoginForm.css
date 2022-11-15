@@ -32,14 +32,7 @@
   display: flex;
   margin-bottom: 20px;
 }
-.login-form__error-message-icon {
-  margin-right: 10px;
-}
-.login-form__error-message {
-  font: 16px/20px "Regular SF Compact Rounded", sans-serif;
-  letter-spacing: 0.08px;
-  color: #ff3b30;
-}
+
 .login-form__input {
   font: 16px/20px "Regular SF Compact Rounded", sans-serif;
   height: 55px;

@@ -7,10 +7,9 @@ import Spinner from "src/components/Spinner/Spinner";
 import { IRootState } from "../../../base/redux/store";
 import { login } from "../../redux/actions";
 import { LOGIN_STATE } from "../../utils/constants";
+import ErrorLoginMessage from "../ErrorLoginMessage/ErrorLoginMessage";
 
 const LoginForm: React.FC = () => {
-  // Hệ thống đang quá tải vui lòng thử lại
-
   const dispatch = useDispatch();
 
   const loginState = useSelector((state: IRootState) => state.auth.state);
@@ -59,16 +58,14 @@ const LoginForm: React.FC = () => {
       <div className="login-form__form-wrapper">
         <form className="login-form__form" autoComplete="off">
           {loginState === LOGIN_STATE.ERROR && (
-            <div className="login-form__form-group">
-              <img
-                className="login-form__error-message-icon"
-                alt="WarningIcon"
-                src="https://r73troypb4obj.vcdn.cloud/picture/icons/login_warning_icon.svg"
-              />
-              <span className="login-form__error-message">
-                Số điện thoại hoặc mật khẩu chưa đúng
-              </span>
-            </div>
+            <ErrorLoginMessage>
+              Số điện thoại hoặc mật khẩu chưa đúng
+            </ErrorLoginMessage>
+          )}
+          {loginState === LOGIN_STATE.TIMEOUT && (
+            <ErrorLoginMessage>
+              Hệ thống đang quá tải vui lòng thử lại
+            </ErrorLoginMessage>
           )}
           <div className="login-form__form-group">
             <input

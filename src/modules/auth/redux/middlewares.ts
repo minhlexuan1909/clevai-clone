@@ -4,8 +4,9 @@ import { MiddlewareRegistry } from "src/modules/base";
 import { IResponse } from "../../base/types/request";
 import { ACTION_TYPES } from "./actionTypes";
 import { loginApi } from "./services";
+import { STATUS_CODE } from "../../base/redux/services";
 
-export const middleware =
+const middleware =
   ({ dispatch, getState }: Store) =>
   (next: Function) =>
   async (action: any) => {
@@ -19,7 +20,6 @@ export const middleware =
           const loginResponse: IResponse<object> = await loginApi(
             action.payload
           );
-          console.log(loginResponse);
           dispatch({
             type: ACTION_TYPES.LOGIN_SUCCESS,
           });
@@ -27,7 +27,12 @@ export const middleware =
             type: ACTION_TYPES.SET_DATA,
             data: loginResponse.data,
           });
-        } catch (error) {
+        } catch (error: any) {
+          if (error.status === STATUS_CODE.INTERNAL_ERROR) {
+            return dispatch({
+              type: ACTION_TYPES.LOGIN_TIMEOUT,
+            });
+          }
           return dispatch({
             type: ACTION_TYPES.LOGIN_ERROR,
           });

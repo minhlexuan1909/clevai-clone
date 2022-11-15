@@ -5,6 +5,7 @@ export const STATUS_TYPES = {
 
 export const LOGIN_STATE = {
   ERROR: "ERROR",
+  TIMEOUT: "TIMEOUT",
   CALLING: "CALLING",
   SUCCESS: "SUCCESS",
   DEFAULT: "DEFAULT",

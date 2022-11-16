@@ -6,3 +6,8 @@ export const login = (loginData: ILoginData) => {
     payload: loginData,
   };
 };
+export const resetData = () => {
+  return {
+    type: ACTION_TYPES.RESET_DATA,
+  };
+};

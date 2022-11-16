@@ -3,7 +3,6 @@ import { MiddlewareRegistry } from "src/modules/base";
 
 import { IResponse } from "../../base/types/request";
 import { ACTION_TYPES } from "./actionTypes";
-import { STATUS_CODE } from "../../base/redux/services";
 import { getUserInfo } from "./services";
 
 const middleware =

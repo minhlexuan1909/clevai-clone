@@ -1,7 +1,9 @@
-import logo from "./logo.svg";
 import "./App.css";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import { LoginPage } from "./modules/auth";
+import PrivateRoute from "./modules/common/pages/PrivateRoute/PrivateRoute";
 import { ProfilePage } from "./modules/profile";
 
 function App() {
@@ -10,7 +12,14 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <ProfilePage />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

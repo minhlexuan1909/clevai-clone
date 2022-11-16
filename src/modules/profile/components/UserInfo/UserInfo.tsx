@@ -1,16 +1,17 @@
-import React from "react";
 import "./UserInfo.css";
-import { StarIcon } from "src/modules/common";
-import ChestNut from "src/modules/common/components/ChestNut/ChestNut";
-import { useSelector, useDispatch } from "react-redux";
+
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "src/modules/base/redux/store";
+import { StarIcon } from "src/modules/common";
 import Card from "src/modules/common/components/Card/Card";
-import { convertDate } from "../../../common/utils";
-import { GET_INFO_STATE } from "../../utils/constants";
-import CloudErrorIcon from "src/modules/common/components/CloudErrorIcon/CloudErrorIcon";
+import ChestNut from "src/modules/common/components/ChestNut/ChestNut";
 import LoadDataError from "src/modules/common/components/LoadDataError/LoadDataError";
-import { getInfo } from "../../redux/actions";
 import Spinner from "src/modules/common/components/Spinner/Spinner";
+
+import { convertDate } from "../../../common/utils";
+import { getInfo } from "../../redux/actions";
+import { GET_INFO_STATE } from "../../utils/constants";
 
 const UserInfo = () => {
   const dispatch = useDispatch();

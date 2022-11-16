@@ -1,11 +1,12 @@
+import "./reducer";
+
 import { compose, createStore } from "redux";
-import thunk from "redux-thunk";
 import { persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import ReducerRegistry from "./ReducerRegistry";
-import "./reducer";
+import thunk from "redux-thunk";
+
 import MiddlewareRegistry from "./MiddlewareRegistry";
-import { composeWithDevTools } from "redux-devtools-extension";
+import ReducerRegistry from "./ReducerRegistry";
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 

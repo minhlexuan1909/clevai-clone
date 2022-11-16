@@ -5,4 +5,5 @@ export const ACTION_TYPES = {
   LOGIN_SUCCESS: Symbol("LOGIN_SUCCESS"),
   LOGIN_TIMEOUT: Symbol("LOGIN_TIMEOUT"),
   SET_DATA: Symbol("SET_DATA"),
+  RESET_DATA: Symbol("RESET_DATA"),
 };

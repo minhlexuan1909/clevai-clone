@@ -1,9 +1,28 @@
-import React from "react";
-import LoginForm from "../../components/LoginForm/LoginForm";
-// import styles from "./LoginPage.module.css";
 import "./LoginPage.css";
 
+import React from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { IRootState } from "../../../base/redux/store";
+import LoginForm from "../../components/LoginForm/LoginForm";
+
+// import styles from "./LoginPage.module.css";
 function LoginPage() {
+  const navigate = useNavigate();
+  const token = useSelector(
+    (state: IRootState) => state.auth.data.access_token
+  );
+
+  useEffect(() => {
+    if (token) {
+      navigate("/profile");
+    }
+  }, [navigate, token]);
+  if (token) {
+    return <></>;
+  }
   const windowHeight = window.innerHeight;
   return (
     <div style={{ height: windowHeight }} className="login-page">

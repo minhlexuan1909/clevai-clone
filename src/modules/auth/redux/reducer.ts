@@ -53,6 +53,11 @@ ReducerRegistry.register("auth", (state = initState, action: TAction) => {
         ...state,
         state: LOGIN_STATE.TIMEOUT,
       };
+    case ACTION_TYPES.RESET_DATA:
+      return {
+        ...state,
+        data: initState.data,
+      };
     default:
       return state;
   }

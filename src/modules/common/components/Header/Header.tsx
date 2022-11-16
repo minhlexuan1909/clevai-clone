@@ -1,17 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import StarIcon from "../StarIcon/StarIcon";
 import "./Header.css";
 import Tooltip from "../Tooltip/Tooltip";
 import ChestNut from "../ChestNut/ChestNut";
-import { useSelector } from "react-redux";
-import { IRootState } from "../../../base/redux/store";
+import { useSelector, useDispatch } from "react-redux";
+import { IRootState, persistor } from "../../../base/redux/store";
 import { getLastName } from "../../utils/index";
+import { resetData } from "../../../auth/redux/actions";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const userInfo = useSelector((state: IRootState) => state.profile.data);
   const userLoginData = useSelector((state: IRootState) => state.auth.data);
   const isActive = userInfo?.default_grade_subject?.status === "ACTIVE";
+
+  const handleLogout = () => {
+    persistor.purge();
+    dispatch(resetData());
+    navigate("/login");
+  };
   return (
     <div className="header">
       <Link to="/profile">
@@ -94,7 +104,10 @@ const Header = () => {
                 <p>Tài khoản của tôi</p>
               </div>
               <div className="header-detail-tooltip__line"></div>
-              <div className="header-detail-tooltip__item header-detail-tooltip__item--hover">
+              <div
+                className="header-detail-tooltip__item header-detail-tooltip__item--hover"
+                onClick={handleLogout}
+              >
                 <p>Đăng xuất</p>
               </div>
             </div>

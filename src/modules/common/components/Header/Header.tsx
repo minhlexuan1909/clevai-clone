@@ -60,9 +60,9 @@ const Header = () => {
             <div className="header-student-info__tooltip header-student-info__star-tooltip">
               <ChestNut width="46px" height="44px" />
               <div className="header-tooltip__description">
-                <p className="header-tooltip__title">Ngôi sao</p>
+                <p className="header-tooltip__title">Hạt dẻ</p>
                 <p className="header-tooltip__detail">
-                  Hoàn thành dạng bài để nhận sao
+                  Tích luỹ hạt dẻ để đổi quà.
                 </p>
               </div>
             </div>

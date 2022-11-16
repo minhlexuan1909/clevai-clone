@@ -5,8 +5,9 @@ import { Header } from "../../../common/components";
 import "./ProfilePage.css";
 
 const ProfilePage = () => {
+  const windowHeight = window.innerHeight;
   return (
-    <div className="profile-page">
+    <div style={{ height: windowHeight }} className="profile-page">
       <Header />
       <UserInfo />
     </div>

@@ -1,0 +1,102 @@
+.user-info {
+  padding: 20px 45px;
+}
+.user-info__detail {
+  display: flex;
+  justify-content: space-between;
+}
+.user-detail__avatar {
+  display: block;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  border-width: 4px;
+  border-style: solid;
+}
+
+.user-detail__left-wrapper {
+  display: flex;
+}
+.user-detail__base-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 30px;
+  font: 20px/24px "Regular SF Compact Rounded", sans-serif;
+  color: #9d9d9d;
+}
+.user-detail__name {
+  color: #000;
+  font: 28px/32px "Semibold SF Compact Rounded", sans-serif;
+}
+.user-detail__phone-grade {
+  margin-top: 12px;
+  display: flex;
+}
+.user-detail__phone {
+  margin-right: 20px;
+}
+.user-detail__grade {
+  display: flex;
+  align-items: center;
+}
+.user-detail__grade-text {
+  margin-left: 20px;
+}
+.user-detail__dot {
+  width: 8px;
+  min-width: 8px;
+  min-height: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: #ff8805;
+}
+.user-detail__rank {
+  margin-top: 12px;
+}
+.user-detail__right-wrapper {
+  border-left: 1px solid #dfdfdf;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}
+.user-detail__date {
+  display: flex;
+  flex-direction: column;
+}
+.user-detail__date-text {
+  color: #9d9d9d;
+  font: 20px/24px "Regular SF Compact Rounded", sans-serif;
+  margin-bottom: 12px;
+}
+.user-detail__date-detail {
+  color: #333;
+  font: 20px/24px "Semibold SF Compact Rounded", sans-serif;
+}
+.user-detail__out-date-wrapper {
+  margin-left: 50px;
+}
+
+.user-info__other-detail {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.user-other-detail__info-block {
+  width: calc(33.33% - 13px);
+  display: flex;
+}
+.user-other-detail__detail-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+}
+.user-other-detail__label {
+  font: 28px/32px "Semibold SF Compact Rounded", sans-serif;
+  margin-bottom: 4px;
+}
+.user-other-detail__description {
+  font: 20px/24px "Regular SF Compact Rounded", sans-serif;
+  color: #9d9d9d;
+}

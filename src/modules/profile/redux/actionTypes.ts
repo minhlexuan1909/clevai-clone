@@ -1,0 +1,7 @@
+export const ACTION_TYPES = {
+  GET_INFO: Symbol("GET_INFO"),
+  GET_INFO_CALLING: Symbol("GET_INFO_CALLING"),
+  GET_INFO_ERROR: Symbol("GET_INFO_ERROR"),
+  GET_INFO_SUCCESS: Symbol("GET_INFO_SUCCESS"),
+  SET_DATA: Symbol("SET_DATA"),
+};

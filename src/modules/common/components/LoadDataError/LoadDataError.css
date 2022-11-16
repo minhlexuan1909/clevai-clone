@@ -1,0 +1,31 @@
+.load-data-error {
+  height: 100%;
+  width: 109%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.load-data-error__upper-text {
+  font: 14px/18px "Medium SF Compact Rounded", sans-serif;
+  color: #9d9d9d;
+  margin: 12px 0 0;
+}
+.load-data-error__lower-text {
+  font: 12px/16px "Regular SF Compact Rounded", sans-serif !important;
+  color: #9d9d9d;
+  margin: 4px 0 0;
+  height: 16px;
+}
+.load-data-error__btn {
+  font: 16px/20px "Semibold SF Compact Rounded", sans-serif;
+  cursor: pointer;
+  height: 40px;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 116px;
+  margin: 18px auto 0;
+}

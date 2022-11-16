@@ -3,29 +3,27 @@ import { ACTION_TYPES } from "./actionTypes";
 import { LOGIN_STATE } from "../utils/constants";
 
 const initState = {
-  auth: {
-    data: {
-      original_id: 11196,
-      account_id: "",
-      student_id: null,
-      specific_object_id: null,
-      access_token: "",
-      refresh_token: "",
-      roles: [],
-      username: "",
-      name: "",
-      email: null,
-      first_name: null,
-      last_name: null,
-      full_name: "",
-      account_status: "",
-      principal: "",
-      expires_in: null,
-      avatar: "",
-      first_time_login: false,
-    },
-    state: null,
+  data: {
+    original_id: 11196,
+    account_id: "",
+    student_id: null,
+    specific_object_id: null,
+    access_token: "",
+    refresh_token: "",
+    roles: [],
+    username: "",
+    name: "",
+    email: null,
+    first_name: null,
+    last_name: null,
+    full_name: "",
+    account_status: "",
+    principal: "",
+    expires_in: null,
+    avatar: "",
+    first_time_login: false,
   },
+  state: null,
 };
 
 ReducerRegistry.register("auth", (state = initState, action: TAction) => {

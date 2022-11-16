@@ -4,8 +4,14 @@ import StarIcon from "../StarIcon/StarIcon";
 import "./Header.css";
 import Tooltip from "../Tooltip/Tooltip";
 import ChestNut from "../ChestNut/ChestNut";
+import { useSelector } from "react-redux";
+import { IRootState } from "../../../base/redux/store";
+import { getLastName } from "../../utils/index";
 
 const Header = () => {
+  const userInfo = useSelector((state: IRootState) => state.profile.data);
+  const userLoginData = useSelector((state: IRootState) => state.auth.data);
+  const isActive = userInfo?.default_grade_subject?.status === "ACTIVE";
   return (
     <div className="header">
       <Link to="/profile">
@@ -34,7 +40,9 @@ const Header = () => {
         </Link>
       </nav>
       <div className="header__student-info">
-        <div className="header-student-info__badge-pill">TRÌNH ĐỘ C2</div>
+        <div className="header-student-info__badge-pill">
+          TRÌNH ĐỘ {userInfo?.default_grade_subject?.class_info?.class_level}
+        </div>
         <Tooltip
           style={{ height: "100%" }}
           content={
@@ -51,7 +59,7 @@ const Header = () => {
         >
           <div className="header-student-info__item header-student-info__star-info">
             <StarIcon width={"29px"} height={"28px"} />
-            <span>945</span>
+            <span>{userInfo?.amount_of_star}</span>
           </div>
         </Tooltip>
         <Tooltip
@@ -70,7 +78,7 @@ const Header = () => {
         >
           <div className="header-student-info__item header-student-info__star-info">
             <ChestNut width={"29px"} height={"28px"} />
-            <span>945</span>
+            <span>{userInfo?.amount_of_chestnut}</span>
           </div>
         </Tooltip>
         <Tooltip
@@ -79,7 +87,7 @@ const Header = () => {
           content={
             <div className="header-student-info__tooltip header-student-info__detail-tooltip">
               <div className="header-detail-tooltip__item header-detail-tooltip__name">
-                <p>Nguyễn Tiến Nam</p>
+                <p>{userLoginData?.full_name}</p>
               </div>
               <div className="header-detail-tooltip__line"></div>
               <div className="header-detail-tooltip__item header-detail-tooltip__item--hover">
@@ -95,13 +103,18 @@ const Header = () => {
           <div className="header-student-info__item header-student-info__detail">
             <div className="header-detail__wrapper">
               <img
+                style={isActive ? { borderColor: "#449570" } : {}}
                 src="https://r73troypb4obj.vcdn.cloud/user/profile/avatar/11196/06022021/avatar1622569674347"
                 alt="avatar"
                 className="header-detail__avatar"
               />
               <div className="header-detail__name-grade">
-                <p className="header-detail__name">Nam</p>
-                <p className="header-detail__grade">Khối 5</p>
+                <p className="header-detail__name">
+                  {getLastName(userLoginData?.full_name)}
+                </p>
+                <p className="header-detail__grade">
+                  {userInfo?.default_grade_subject?.grade_original_name}
+                </p>
               </div>
             </div>
           </div>

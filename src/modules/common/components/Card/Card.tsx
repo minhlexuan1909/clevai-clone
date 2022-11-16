@@ -2,8 +2,8 @@ import React from "react";
 import "./Card.css";
 
 type Props = {
-  className: string;
-  style: object;
+  className?: string;
+  style?: object;
   children: JSX.Element;
 };
 

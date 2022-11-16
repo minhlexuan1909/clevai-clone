@@ -52,7 +52,7 @@ const composeEnhancers =
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: [],
+  whitelist: ["auth", "profile"],
 };
 
 const reducers = ReducerRegistry.combineReducers(persistConfig);

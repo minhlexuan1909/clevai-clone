@@ -2,7 +2,7 @@ import "./LoginForm.css";
 
 import React, { SyntheticEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Spinner from "src/components/Spinner/Spinner";
+import Spinner from "src/modules/common/components/Spinner/Spinner";
 
 import { IRootState } from "../../../base/redux/store";
 import { login } from "../../redux/actions";

@@ -3,7 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+a {
+  text-decoration: none;
+  color: #000;
+}
 .btn {
   display: flex;
   justify-content: center;

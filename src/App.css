@@ -7,25 +7,6 @@ a {
   text-decoration: none;
   color: #000;
 }
-.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  transition: all 0.15s ease-in-out;
-}
-.btn--disabled {
-  background-color: #dfdfdf;
-}
-.btn--active {
-  background-color: #ff8805;
-}
-
-.btn--active:hover {
-  background-color: #faa541;
-}
 .spinner-wrapper {
   display: flex;
   align-items: center;

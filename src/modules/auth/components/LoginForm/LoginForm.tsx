@@ -8,6 +8,7 @@ import { IRootState } from "../../../base/redux/store";
 import { login } from "../../redux/actions";
 import { LOGIN_STATE } from "../../utils/constants";
 import ErrorLoginMessage from "../ErrorLoginMessage/ErrorLoginMessage";
+import Button from "src/modules/common/components/Button/Button";
 
 const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
@@ -104,17 +105,17 @@ const LoginForm: React.FC = () => {
             </span>
           </div>
           <div>
-            <button
-              type="button"
-              disabled={!isFormValid || loginState === LOGIN_STATE.CALLING}
-              className={`login-form__login-btn btn ${
-                isFormValid ? "btn--active" : "btn--disabled"
-              }`}
+            <Button
+              className="login-form__login-btn"
+              disableCondition={!isFormValid}
+              type={"button"}
               onClick={handleLoginBtn}
             >
-              {loginState === LOGIN_STATE.CALLING ? <Spinner /> : <></>}
-              Đăng nhập
-            </button>
+              <span>
+                {loginState === LOGIN_STATE.CALLING ? <Spinner /> : <></>}
+                Đăng nhập
+              </span>
+            </Button>
           </div>
         </form>
       </div>

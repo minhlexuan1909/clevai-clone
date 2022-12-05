@@ -6,6 +6,8 @@
   border: none;
   cursor: pointer;
   transition: all 0.15s ease-in-out;
+  font: 16px/20px "Semibold SF Compact Rounded", sans-serif;
+  color: #fff;
 }
 .btn--disabled {
   background-color: #dfdfdf;

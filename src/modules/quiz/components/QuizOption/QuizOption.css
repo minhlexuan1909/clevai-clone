@@ -1,0 +1,37 @@
+.quiz-option {
+  height: 62px;
+  margin: 10px 0;
+  float: left;
+  width: calc(50% - 10px);
+  min-height: 62px;
+  border: 1px solid #bababa;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 12px;
+  cursor: pointer;
+
+  font: 18px/22px "Medium SF Compact Rounded", sans-serif;
+}
+
+.quiz-option--not-selected.quiz-option:hover {
+  background: #e5e5e5;
+}
+
+.quiz-option--selected {
+  background: #daf2fa;
+  border: 1px solid #45cbfa;
+  color: #45cbfa;
+}
+
+.quiz-option--correct {
+  background: #cefdd5;
+  border: 1px solid #2acb42;
+  color: #2acb42;
+}
+.quiz-option--incorrect {
+  background: #ffcfcc;
+  border: 1px solid #ff3b30;
+  color: #ff3b30;
+}

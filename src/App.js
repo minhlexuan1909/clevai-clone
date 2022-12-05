@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { LoginPage } from "./modules/auth";
 import PrivateRoute from "./modules/common/pages/PrivateRoute/PrivateRoute";
 import { ProfilePage } from "./modules/profile";
+import { QuizPage } from "./modules/quiz";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path="/quiz" element={<QuizPage />} />
       </Routes>
     </BrowserRouter>
   );

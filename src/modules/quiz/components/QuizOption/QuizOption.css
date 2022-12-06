@@ -15,7 +15,10 @@
   font: 18px/22px "Medium SF Compact Rounded", sans-serif;
 }
 
-.quiz-option--not-selected.quiz-option:hover {
+.quiz-option--not-selected.quiz-option:not(
+    .quiz-option--correct,
+    .quiz-option--incorrect
+  ):hover {
   background: #e5e5e5;
 }
 

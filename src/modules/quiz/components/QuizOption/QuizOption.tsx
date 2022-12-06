@@ -13,13 +13,15 @@ const QuizOption: React.FC<Props> = (props) => {
   const { children, isSelected, isAnswered, isCorrect, onClick } = props;
   return (
     <div
-      className={`${
-        isSelected ? "quiz-option--selected" : "quiz-option--not-selected"
-      } ${
+      className={`
+      ${isSelected ? "quiz-option--selected" : "quiz-option--not-selected"} 
+      ${
         isAnswered
           ? isCorrect
             ? "quiz-option--correct"
-            : "quiz-option--incorrect"
+            : isSelected
+            ? "quiz-option--incorrect"
+            : ""
           : ""
       } 
       quiz-option`}

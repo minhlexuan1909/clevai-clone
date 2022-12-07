@@ -33,6 +33,11 @@ ReducerRegistry.register("auth", (state = initState, action: TAction) => {
         ...state,
         data: action.data,
       };
+    case ACTION_TYPES.LOGIN_DEFAULT:
+      return {
+        ...state,
+        state: null,
+      };
     case ACTION_TYPES.LOGIN_CALLING:
       return {
         ...state,

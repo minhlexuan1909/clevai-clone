@@ -10,9 +10,9 @@ export interface QuizOptionProps {
   onClick: React.MouseEventHandler<HTMLDivElement>;
 }
 
-type Ref = HTMLDivElement;
+export type QuizOptionRef = HTMLDivElement;
 
-const QuizOptionWrapper = React.forwardRef<Ref, QuizOptionProps>(
+const QuizOptionWrapper = React.forwardRef<QuizOptionRef, QuizOptionProps>(
   (props, ref) => {
     const {
       children,
@@ -29,7 +29,7 @@ const QuizOptionWrapper = React.forwardRef<Ref, QuizOptionProps>(
             isSelected ? "quiz-option--selected" : "quiz-option--not-selected"
           } ${isTempSelected ? "quiz-option--temp-selected" : ""} ${
             isAnswered
-              ? isCorrect
+              ? isCorrect && isSelected
                 ? "quiz-option--correct"
                 : isSelected
                 ? "quiz-option--incorrect"

@@ -29,7 +29,7 @@ const QuizOptionWrapper = React.forwardRef<QuizOptionRef, QuizOptionProps>(
             isSelected ? "quiz-option--selected" : "quiz-option--not-selected"
           } ${isTempSelected ? "quiz-option--temp-selected" : ""} ${
             isAnswered
-              ? isCorrect && isSelected
+              ? isCorrect
                 ? "quiz-option--correct"
                 : isSelected
                 ? "quiz-option--incorrect"

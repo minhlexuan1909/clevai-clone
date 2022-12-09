@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Button from "src/modules/common/components/Button/Button";
-import "./ButtonContinue.css";
+import "./ButtonContinueWrapper.css";
 
 type Props = {
   children: string;
@@ -12,7 +12,7 @@ type Props = {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const ButtonContinue: React.FC<Props> = (props) => {
+const ButtonContinueWrapper: React.FC<Props> = (props) => {
   const {
     children,
     correctDelaySecond = 1,
@@ -59,4 +59,4 @@ const ButtonContinue: React.FC<Props> = (props) => {
   );
 };
 
-export default ButtonContinue;
+export default ButtonContinueWrapper;

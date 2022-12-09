@@ -1,0 +1,11 @@
+.checkbox {
+  height: 16px;
+  width: 16px;
+  /* border: 1px solid RGB(235, 235, 235); */
+  background-image: url("https://r73troypb4obj.vcdn.cloud/picture/icons/login_check_box_inactive.svg");
+  margin-right: 10px;
+  cursor: pointer;
+}
+.checkbox--checked {
+  background-image: url("https://r73troypb4obj.vcdn.cloud/picture/icons/login_check_box_active.svg");
+}

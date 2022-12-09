@@ -9,6 +9,7 @@ import { login } from "../../redux/actions";
 import { LOGIN_STATE } from "../../utils/constants";
 import ErrorLoginMessage from "../ErrorLoginMessage/ErrorLoginMessage";
 import Button from "src/modules/common/components/Button/Button";
+import Checkbox from "src/modules/common/components/Checkbox/Checkbox";
 
 const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
@@ -89,12 +90,16 @@ const LoginForm: React.FC = () => {
             />
           </div>
           <div className="login-form__form-group login-form__show-password-group">
-            <div
+            {/* <div
               className={`login-form__show-password-checkbox ${
                 isShowPassword && "login-form__show-password-checkbox--checked"
               }`}
               onClick={handleToggleShowPassword}
-            ></div>
+            ></div> */}
+            <Checkbox
+              isSelected={isShowPassword}
+              onClick={handleToggleShowPassword}
+            />
             <span
               className={`login-form__show-password-text ${
                 isShowPassword && "login-form__show-password-text--checked"

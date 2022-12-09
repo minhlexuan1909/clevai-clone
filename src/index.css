@@ -30,3 +30,9 @@ code {
     format("truetype");
   font-weight: 600;
 }
+@font-face {
+  font-family: "Bold SF Compact Rounded";
+  src: url("https://r73troypb4obj.vcdn.cloud/web/fonts/SF-Compact-Rounded-Bold.ttf")
+    format("truetype");
+  font-weight: 700;
+}

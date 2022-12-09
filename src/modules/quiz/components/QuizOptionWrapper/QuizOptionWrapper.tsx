@@ -3,7 +3,7 @@ import "./QuizOptionWrapper.scss";
 
 export interface QuizOptionProps {
   children?: JSX.Element | string;
-  isTempSelected: boolean;
+  isTempSelected?: boolean;
   isSelected: boolean;
   isAnswered: boolean;
   isCorrect: boolean | null;
@@ -16,7 +16,7 @@ const QuizOptionWrapper = React.forwardRef<QuizOptionRef, QuizOptionProps>(
   (props, ref) => {
     const {
       children,
-      isTempSelected,
+      isTempSelected = false,
       isSelected,
       isAnswered,
       isCorrect,

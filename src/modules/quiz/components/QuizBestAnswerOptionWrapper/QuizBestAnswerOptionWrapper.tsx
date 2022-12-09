@@ -1,7 +1,7 @@
 import React from "react";
-import QuizOptionWrapper from "../QuizOption/QuizOptionWrapper";
+import QuizOptionWrapper from "../QuizOptionWrapper/QuizOptionWrapper";
 import "./QuizBestAnswerOptionWrapper.scss";
-import { QuizOptionProps } from "../QuizOption/QuizOptionWrapper";
+import { QuizOptionProps } from "../QuizOptionWrapper/QuizOptionWrapper";
 
 const QuizBestAnswerOptionWrapper: React.FC<QuizOptionProps> = (props) => {
   const {

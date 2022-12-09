@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ButtonContinueWrapper from "../ButtonContinue/ButtonContinueWrapper";
+import ButtonContinueWrapper from "../ButtonContinueWrapper/ButtonContinueWrapper";
 import QuizBestAnswerOptionWrapper from "../QuizBestAnswerOptionWrapper/QuizBestAnswerOptionWrapper";
 import "./QuizBestAnswerWrapper.scss";
 

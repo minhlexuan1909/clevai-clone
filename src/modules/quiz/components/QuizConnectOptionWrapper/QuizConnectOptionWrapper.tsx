@@ -1,8 +1,8 @@
 import React from "react";
-import QuizOptionWrapper from "../QuizOption/QuizOptionWrapper";
+import QuizOptionWrapper from "../QuizOptionWrapper/QuizOptionWrapper";
 import "./QuizConnectOptionWrapper.scss";
-import { QuizOptionProps } from "../QuizOption/QuizOptionWrapper";
-import { QuizOptionRef } from "../QuizOption/QuizOptionWrapper";
+import { QuizOptionProps } from "../QuizOptionWrapper/QuizOptionWrapper";
+import { QuizOptionRef } from "../QuizOptionWrapper/QuizOptionWrapper";
 
 const QuizConnectOptionWrapper = React.forwardRef<
   QuizOptionRef,

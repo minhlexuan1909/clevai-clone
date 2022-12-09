@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import QuizConnectOptionWrapper from "../QuizConnectOption/QuizConnectOptionWrapper";
-import ButtonContinueWrapper from "../ButtonContinue/ButtonContinueWrapper";
+import QuizConnectOptionWrapper from "../QuizConnectOptionWrapper/QuizConnectOptionWrapper";
+import ButtonContinueWrapper from "../ButtonContinueWrapper/ButtonContinueWrapper";
 import "./QuizConnectWrapper.scss";
 
 type LeftAnswer = {

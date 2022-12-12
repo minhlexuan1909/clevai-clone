@@ -15,6 +15,8 @@ type RightAnswer = {
 };
 
 const QuizConnectWrapper = () => {
+  const wrapperStyleRef = useRef<CSSStyleDeclaration | null>(null);
+
   const [isAnswered, setIsAnswered] = useState<boolean>(false);
   const leftConnectIconRef = useRef<null | HTMLDivElement>(null);
   const rightConnectIconRef = useRef<null | HTMLDivElement>(null);
@@ -23,11 +25,18 @@ const QuizConnectWrapper = () => {
     useState<null | DOMRect>(null);
   const [rightConnectIconRect, setRightConnectIconRect] =
     useState<null | DOMRect>(null);
+  const rowGapStyle = wrapperStyleRef.current?.rowGap;
   const quizWrapperHeight = leftConnectIconRect
     ? leftConnectIconRect.height
     : null;
-  const topToMiddleQuizWrapperDistance = quizWrapperHeight
-    ? quizWrapperHeight / 2
+
+  const topToMiddleQuizWrapperDistance =
+    quizWrapperHeight && wrapperStyleRef.current?.rowGap
+      ? quizWrapperHeight / 2
+      : null;
+
+  const middlePointDistance = quizWrapperHeight
+    ? quizWrapperHeight + parseInt(rowGapStyle!.slice(0, rowGapStyle!.length))
     : null;
 
   const [selectedLeftIndex, setSelectedLeftIndex] = useState<null | number>(
@@ -84,6 +93,11 @@ const QuizConnectWrapper = () => {
       setRightAnswerList([...rightAnswerList]);
     }
   };
+  useEffect(() => {
+    wrapperStyleRef.current = getComputedStyle(
+      document.querySelector(".quiz-container")!
+    );
+  }, []);
   useEffect(() => {
     let isAllConnected = true;
     let isConnectCorrect = true;
@@ -174,7 +188,7 @@ const QuizConnectWrapper = () => {
                 }
                 x1="0"
                 y1={
-                  topToMiddleQuizWrapperDistance! + index * quizWrapperHeight!
+                  topToMiddleQuizWrapperDistance! + index * middlePointDistance!
                   // (leftConnectIconRect.bottom - leftConnectIconRect.top) / 2 +
                   // leftConnectIconRect.top
                 }
@@ -184,7 +198,7 @@ const QuizConnectWrapper = () => {
                   //   2 +
                   // rightConnectIconRect.top
                   topToMiddleQuizWrapperDistance! +
-                  item.rightIndexConnectedTo * quizWrapperHeight!
+                  item.rightIndexConnectedTo * middlePointDistance!
                 }
               />
             </svg>

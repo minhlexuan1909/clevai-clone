@@ -1,0 +1,34 @@
+.learning-object-header {
+  margin: 18px auto 0 auto;
+  display: flex;
+  align-items: center;
+  width: calc(100% - 228px);
+  &__close-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
+    cursor: pointer;
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: #bababa;
+      &:hover {
+        fill: #dfdfdf;
+      }
+    }
+  }
+  &__progress-bar {
+    flex: 1 1;
+  }
+}
+.learning-object-progress-bar {
+  flex: 1 1;
+  height: 12px;
+  background-color: #dfdfdf;
+  border-radius: 16px;
+  overflow: hidden;
+  &__complete {
+    height: 100%;
+    background: #ffcb05;
+  }
+}

@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
-import QuizConnectOptionWrapper from "../QuizConnectOptionWrapper/QuizConnectOptionWrapper";
-import ButtonContinueWrapper from "../ButtonContinueWrapper/ButtonContinueWrapper";
 import "./QuizConnectWrapper.scss";
+
+import React, { useEffect, useRef, useState } from "react";
+
+import QuizConnectOptionWrapper from "../QuizConnectOptionWrapper/QuizConnectOptionWrapper";
 
 type LeftAnswer = {
   id: number;
@@ -60,9 +61,6 @@ const QuizConnectWrapper = () => {
     { id: 3, description: "Chuối", leftIndexConnectedTo: null },
   ]);
 
-  const handleButtonContinueClick = () => {
-    setIsAnswered(true);
-  };
   const handleSelectLeftConnectOption = (leftIndex: number) => {
     if (
       !isAnswered &&
@@ -248,14 +246,6 @@ const QuizConnectWrapper = () => {
             </>
           </React.Fragment>
         ))}
-        <ButtonContinueWrapper
-          isCompleteAnswer={isAllOptionConnected}
-          isAnswered={isAnswered}
-          isAnsweredCorrect={isAnswered && isConnectCorrect}
-          onClick={handleButtonContinueClick}
-        >
-          Tiếp tục
-        </ButtonContinueWrapper>
       </>
     </div>
   );

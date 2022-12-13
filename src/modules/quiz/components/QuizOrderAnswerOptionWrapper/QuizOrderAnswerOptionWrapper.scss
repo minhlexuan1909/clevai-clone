@@ -1,0 +1,21 @@
+.quiz-order-answer-option {
+  width: 50%;
+  transition: all 200ms;
+  transition-timing-function: cubic-bezier(0.48, 0.72, 0.62, 1.5);
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: move;
+  .quiz-option-wrapper {
+    pointer-events: none;
+  }
+  .quiz-option {
+    cursor: unset;
+  }
+  &--moving {
+    opacity: 0.2;
+    border: 1px dashed #000;
+  }
+  &--under-dragged-option {
+    transform: scale(1.1, 1.1);
+  }
+}

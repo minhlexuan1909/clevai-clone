@@ -4,7 +4,7 @@ import React, { SyntheticEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "src/modules/common/components/Spinner/Spinner";
 
-import { IRootState } from "../../../base/redux/store";
+// import { IRootState } from "../../../base/redux/store";
 import { login } from "../../redux/actions";
 import { LOGIN_STATE } from "../../utils/constants";
 import ErrorLoginMessage from "../ErrorLoginMessage/ErrorLoginMessage";
@@ -14,7 +14,7 @@ import Checkbox from "src/modules/common/components/Checkbox/Checkbox";
 const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
 
-  const loginState = useSelector((state: IRootState) => state.auth.state);
+  const loginState = useSelector((state: any) => state.auth.state);
 
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");

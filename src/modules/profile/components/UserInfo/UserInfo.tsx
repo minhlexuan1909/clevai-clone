@@ -2,7 +2,7 @@ import "./UserInfo.css";
 
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { IRootState } from "src/modules/base/redux/store";
+// import { IRootState } from "src/modules/base/redux/store";
 import { StarIcon } from "src/modules/common";
 import Card from "src/modules/common/components/Card/Card";
 import ChestNut from "src/modules/common/components/ChestNut/ChestNut";
@@ -16,12 +16,10 @@ import { GET_INFO_STATE } from "../../utils/constants";
 const UserInfo = () => {
   const dispatch = useDispatch();
 
-  const userLoginData = useSelector((state: IRootState) => state.auth.data);
-  const token = useSelector(
-    (state: IRootState) => state.auth.data.access_token
-  );
-  const userInfo = useSelector((state: IRootState) => state.profile.data);
-  const profileState = useSelector((state: IRootState) => state.profile.state);
+  const userLoginData = useSelector((state: any) => state.auth.data);
+  const token = useSelector((state: any) => state.auth.data.access_token);
+  const userInfo = useSelector((state: any) => state.profile.data);
+  const profileState = useSelector((state: any) => state.profile.state);
   const isLoadInfoError = profileState === GET_INFO_STATE.ERROR;
   const isLoadingInfo = profileState === GET_INFO_STATE.CALLING;
   const isActive = userInfo?.default_grade_subject?.status === "ACTIVE";

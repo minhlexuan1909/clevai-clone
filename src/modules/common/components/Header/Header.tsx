@@ -5,7 +5,7 @@ import "./Header.css";
 import Tooltip from "../Tooltip/Tooltip";
 import ChestNut from "../ChestNut/ChestNut";
 import { useSelector, useDispatch } from "react-redux";
-import { IRootState, persistor } from "../../../base/redux/store";
+// import { IRootState, persistor } from "../../../base/redux/store";
 import { getLastName } from "../../utils/index";
 import { resetData } from "../../../auth/redux/actions";
 
@@ -13,12 +13,12 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const userInfo = useSelector((state: IRootState) => state.profile.data);
-  const userLoginData = useSelector((state: IRootState) => state.auth.data);
+  const userInfo = useSelector((state: any) => state.profile.data);
+  const userLoginData = useSelector((state: any) => state.auth.data);
   const isActive = userInfo?.default_grade_subject?.status === "ACTIVE";
 
   const handleLogout = () => {
-    persistor.purge();
+    // persistor.purge();
     dispatch(resetData());
     navigate("/login");
   };

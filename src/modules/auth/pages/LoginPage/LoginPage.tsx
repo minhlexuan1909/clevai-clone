@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { IRootState } from "../../../base/redux/store";
+// import { IRootState } from "../../../base/redux/store";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import { resetLoginState } from "../../redux/actions";
 
@@ -14,7 +14,7 @@ function LoginPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const token = useSelector(
-    (state: IRootState) => state.auth.data.access_token
+    (state: any) => state.auth.data.access_token
   );
 
   useEffect(() => {

@@ -55,9 +55,7 @@ const persistConfig = {
   storage,
   whitelist: ["auth", "profile"],
 };
-
 const reducers = ReducerRegistry.combineReducers(persistConfig);
-
 MiddlewareRegistry.register(thunk);
 const middleware = MiddlewareRegistry.applyMiddleware();
 const store = createStore(reducers, composeEnhancers(middleware));
@@ -65,5 +63,5 @@ const persistor = persistStore(store, {}, () => {});
 
 export { persistor };
 
-export type IRootState = ReturnType<typeof store.getState>;
+// export type IRootState = ReturnType<typeof store.getState>;
 export default store;

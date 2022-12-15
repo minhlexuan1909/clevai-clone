@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./QuizHeaderWrapper.scss";
 
 export interface LearningObjectProgressBarType {
@@ -9,14 +10,19 @@ export interface LearningObjectProgressBarType {
 const QuizHeaderWrapper: React.FC<LearningObjectProgressBarType> = (props) => {
   const { totalExpRequired, currentExp } = props;
 
+  const navigate = useNavigate();
+
   const progressBarRef = useRef<null | HTMLDivElement>(null);
   // const progressBarWidth = progressBarRef.current?.offsetWidth;
   const [progressBarWidth, setProgressBarWidth] = useState<number>(0);
   const completedProgressWidth = progressBarWidth
     ? Math.round((currentExp / totalExpRequired) * progressBarWidth)
     : 0;
-  console.log(progressBarWidth);
-  console.log(completedProgressWidth);
+
+  const handleCloseClick = () => {
+    navigate("/");
+  };
+
   useEffect(() => {
     if (progressBarRef.current) {
       setProgressBarWidth(progressBarRef.current.offsetWidth);
@@ -24,7 +30,10 @@ const QuizHeaderWrapper: React.FC<LearningObjectProgressBarType> = (props) => {
   }, [progressBarRef]);
   return (
     <div className="learning-object-header">
-      <div className="learning-object-header__close-icon">
+      <div
+        className="learning-object-header__close-icon"
+        onClick={handleCloseClick}
+      >
         <svg width="16.911" height="16.911" viewBox="0 0 16.911 16.911">
           <defs></defs>
           <path

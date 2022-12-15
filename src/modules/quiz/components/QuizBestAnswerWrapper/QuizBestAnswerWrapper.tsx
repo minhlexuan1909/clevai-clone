@@ -43,12 +43,7 @@ const QuizBestAnswerWrapper = () => {
           {quiz.description}
         </QuizBestAnswerOptionWrapper>
       ))}
-      <ButtonContinueWrapper
-        isCompleteAnswer={isOptionSelected}
-        isAnswered={isAnswered}
-        isAnsweredCorrect={isAnswered && isSelectedCorrect}
-        onClick={handleButtonContinueClick}
-      >
+      <ButtonContinueWrapper onClick={handleButtonContinueClick}>
         Tiếp tục
       </ButtonContinueWrapper>
     </div>

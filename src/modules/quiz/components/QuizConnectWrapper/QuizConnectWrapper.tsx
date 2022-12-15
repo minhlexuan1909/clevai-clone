@@ -1,35 +1,53 @@
 import "./QuizConnectWrapper.scss";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import QuizConnectOptionWrapper from "../QuizConnectOptionWrapper/QuizConnectOptionWrapper";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsCompleteAnswer, setIsAnsweredCorrect } from "../../redux/actions";
+import { shuffleArray } from "../../utils/shuffleArray";
 
 type LeftAnswer = {
   id: number;
-  description: string | JSX.Element;
+  description: string;
   rightIndexConnectedTo: null | number;
 };
 type RightAnswer = {
   id: number;
-  description: string | JSX.Element;
+  description: string;
   leftIndexConnectedTo: null | number;
 };
 
 const QuizConnectWrapper = () => {
+  const dispatch = useDispatch();
+
   const wrapperStyleRef = useRef<CSSStyleDeclaration | null>(null);
 
-  const [isAnswered, setIsAnswered] = useState<boolean>(false);
-  const leftConnectIconRef = useRef<null | HTMLDivElement>(null);
-  const rightConnectIconRef = useRef<null | HTMLDivElement>(null);
+  const leftOptionRef: any = useCallback((node: null | HTMLDivElement) => {
+    if (node !== null) {
+      setleftOptionRect(node.getBoundingClientRect());
+      setLeftOptionNode(node);
+    }
+  }, []);
+  const rightOptionRef: any = useCallback((node: null | HTMLDivElement) => {
+    if (node !== null) {
+      setrightOptionRect(node.getBoundingClientRect());
+      setRightOptionNode(node);
+    }
+  }, []);
+  const [leftOptionNode, setLeftOptionNode] = useState<null | HTMLDivElement>(
+    null
+  );
+  const [rightOptionNode, setRightOptionNode] = useState<null | HTMLDivElement>(
+    null
+  );
 
-  const [leftConnectIconRect, setLeftConnectIconRect] =
-    useState<null | DOMRect>(null);
-  const [rightConnectIconRect, setRightConnectIconRect] =
-    useState<null | DOMRect>(null);
+  const answerList = useSelector((state: any) => state.quiz.quiz?.answers);
+  const isAnswered = useSelector((state: any) => state.quiz.isAnswered);
+  const [leftOptionRect, setleftOptionRect] = useState<null | DOMRect>(null);
+  const [rightOptionRect, setrightOptionRect] = useState<null | DOMRect>(null);
   const rowGapStyle = wrapperStyleRef.current?.rowGap;
-  const quizWrapperHeight = leftConnectIconRect
-    ? leftConnectIconRect.height
-    : null;
+  const quizWrapperHeight = leftOptionRect ? leftOptionRect.height : null;
 
   const topToMiddleQuizWrapperDistance =
     quizWrapperHeight && wrapperStyleRef.current?.rowGap
@@ -46,21 +64,31 @@ const QuizConnectWrapper = () => {
   const [selectedRightIndex, setSelectedRightIndex] = useState<null | number>(
     null
   );
-  const [isAllOptionConnected, setIsAllOptionConnected] =
-    useState<boolean>(false);
-  const [isConnectCorrect, setIsConnectCorrect] = useState<boolean>(false);
 
-  const [leftAnswerList, setLeftAnswerList] = useState<LeftAnswer[]>([
-    { id: 1, description: "Mèo", rightIndexConnectedTo: null },
-    { id: 2, description: "Chó", rightIndexConnectedTo: null },
-    { id: 3, description: "Khỉ", rightIndexConnectedTo: null },
-  ]);
-  const [rightAnswerList, setRightAnswerList] = useState<RightAnswer[]>([
-    { id: 1, description: "Cá", leftIndexConnectedTo: null },
-    { id: 2, description: "Xương", leftIndexConnectedTo: null },
-    { id: 3, description: "Chuối", leftIndexConnectedTo: null },
-  ]);
+  const [leftAnswerList, setLeftAnswerList] = useState<LeftAnswer[]>([]);
+  const [rightAnswerList, setRightAnswerList] = useState<RightAnswer[]>([]);
 
+  useEffect(() => {
+    if (answerList) {
+      const leftAnswerList = answerList.map((item: any) => {
+        return {
+          id: item.id,
+          description: item.content,
+          rightIndexConnectedTo: null,
+        };
+      });
+      const rightAnswerList = answerList.map((item: any) => {
+        return {
+          id: item.id,
+          description: item.correctConnectContent,
+          leftIndexConnectedTo: null,
+        };
+      });
+      setLeftAnswerList(leftAnswerList);
+      shuffleArray(rightAnswerList);
+      setRightAnswerList(rightAnswerList);
+    }
+  }, [answerList]);
   const handleSelectLeftConnectOption = (leftIndex: number) => {
     if (
       !isAnswered &&
@@ -111,29 +139,24 @@ const QuizConnectWrapper = () => {
         return;
       }
     });
-    setIsAllOptionConnected(isAllConnected);
-    setIsConnectCorrect(isConnectCorrect);
+    dispatch(setIsCompleteAnswer(isAllConnected));
+    dispatch(setIsAnsweredCorrect(isConnectCorrect));
   }, [leftAnswerList, rightAnswerList]);
+
+  // Re-positioning line
   useEffect(() => {
     let observer: ResizeObserver;
-    if (leftConnectIconRef.current && rightConnectIconRef.current) {
-      const leftConnectIconRefCurrent = leftConnectIconRef.current;
-      const rightConnectIconRefCurrent = rightConnectIconRef.current;
+    if (leftOptionNode && rightOptionNode) {
       observer = new ResizeObserver(() => {
-        setLeftConnectIconRect(
-          leftConnectIconRefCurrent.getBoundingClientRect()
-        );
-        setRightConnectIconRect(
-          rightConnectIconRefCurrent.getBoundingClientRect()
-        );
+        setleftOptionRect(leftOptionNode.getBoundingClientRect());
+        setrightOptionRect(rightOptionNode.getBoundingClientRect());
       });
-      observer.observe(leftConnectIconRefCurrent);
+      observer.observe(leftOptionNode);
       return () => {
-        leftConnectIconRefCurrent &&
-          observer.unobserve(leftConnectIconRefCurrent);
+        leftOptionNode && observer.unobserve(leftOptionNode);
       };
     }
-  }, []);
+  }, [leftOptionNode]);
   useEffect(() => {
     if (selectedLeftIndex !== null && selectedRightIndex !== null) {
       leftAnswerList[selectedLeftIndex].rightIndexConnectedTo =
@@ -148,33 +171,19 @@ const QuizConnectWrapper = () => {
       setSelectedRightIndex(null);
     }
   }, [selectedLeftIndex, selectedRightIndex, leftAnswerList, rightAnswerList]);
-  useEffect(() => {
-    if (leftConnectIconRef.current) {
-      setLeftConnectIconRect(
-        leftConnectIconRef.current.getBoundingClientRect()
-      );
-    }
-  }, [leftConnectIconRef]);
-  useEffect(() => {
-    if (rightConnectIconRef.current) {
-      setRightConnectIconRect(
-        rightConnectIconRef.current.getBoundingClientRect()
-      );
-    }
-  }, [rightConnectIconRef]);
   return (
     <div className="quiz-connect quiz-container">
       <>
         {leftAnswerList.map((item, index) => {
           return item.rightIndexConnectedTo !== null &&
-            leftConnectIconRect &&
-            rightConnectIconRect ? (
+            leftOptionRect &&
+            rightOptionRect ? (
             <svg
               key={item.id}
               style={{
-                left: `${leftConnectIconRect.right}px`,
+                left: `${leftOptionRect.right}px`,
               }}
-              width={rightConnectIconRect.left - leftConnectIconRect.right}
+              width={rightOptionRect.left - leftOptionRect.right}
             >
               <line
                 className={
@@ -187,14 +196,14 @@ const QuizConnectWrapper = () => {
                 x1="0"
                 y1={
                   topToMiddleQuizWrapperDistance! + index * middlePointDistance!
-                  // (leftConnectIconRect.bottom - leftConnectIconRect.top) / 2 +
-                  // leftConnectIconRect.top
+                  // (leftOptionRect.bottom - leftOptionRect.top) / 2 +
+                  // leftOptionRect.top
                 }
-                x2={rightConnectIconRect.left - leftConnectIconRect.right}
+                x2={rightOptionRect.left - leftOptionRect.right}
                 y2={
-                  // (rightConnectIconRect.bottom - rightConnectIconRect.top) /
+                  // (rightOptionRect.bottom - rightOptionRect.top) /
                   //   2 +
-                  // rightConnectIconRect.top
+                  // rightOptionRect.top
                   topToMiddleQuizWrapperDistance! +
                   item.rightIndexConnectedTo * middlePointDistance!
                 }
@@ -209,7 +218,7 @@ const QuizConnectWrapper = () => {
             <>
               <QuizConnectOptionWrapper
                 key={`${leftAnswerList[index].id}-left`}
-                ref={index === 0 ? leftConnectIconRef : null}
+                ref={index === 0 ? leftOptionRef : null}
                 isTempSelected={index === selectedLeftIndex}
                 isSelected={item.rightIndexConnectedTo !== null}
                 isAnswered={isAnswered}
@@ -222,26 +231,40 @@ const QuizConnectWrapper = () => {
                   handleSelectLeftConnectOption(index);
                 }}
               >
-                {leftAnswerList[index].description}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: leftAnswerList[index].description,
+                  }}
+                ></div>
               </QuizConnectOptionWrapper>
               <QuizConnectOptionWrapper
                 key={`${rightAnswerList[index].id}-right`}
-                ref={index === 0 ? rightConnectIconRef : null}
+                ref={index === 0 ? rightOptionRef : null}
                 isTempSelected={index === selectedRightIndex}
                 isSelected={
                   rightAnswerList[index].leftIndexConnectedTo !== null
                 }
                 isAnswered={isAnswered}
                 isCorrect={
-                  item.rightIndexConnectedTo !== null
-                    ? item.id === rightAnswerList[item.rightIndexConnectedTo].id
+                  // item.rightIndexConnectedTo !== null
+                  //   ? item.id === rightAnswerList[item.rightIndexConnectedTo].id
+                  //   : false
+                  rightAnswerList[index].leftIndexConnectedTo !== null
+                    ? rightAnswerList[index].id ===
+                      leftAnswerList[
+                        rightAnswerList[index].leftIndexConnectedTo!
+                      ].id
                     : false
                 }
                 onClick={() => {
                   handleSelectRightConnectOption(index);
                 }}
               >
-                {rightAnswerList[index].description}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: rightAnswerList[index].description,
+                  }}
+                ></div>
               </QuizConnectOptionWrapper>
             </>
           </React.Fragment>

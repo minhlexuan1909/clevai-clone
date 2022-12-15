@@ -1,7 +1,7 @@
 import axios from "axios";
 
 axios.defaults.baseURL = process.env.REACT_APP_BASE_API_URL;
-const DEFAULT_TIME_OUT = 30 * 1000; //minisecond
+const DEFAULT_TIME_OUT = 5 * 1000; //minisecond
 const defaults = {
   headers: {
     "Content-Type": "application/json",

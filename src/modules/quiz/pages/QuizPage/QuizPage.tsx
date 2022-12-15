@@ -6,24 +6,25 @@ import QuizConnectWrapper from "../../components/QuizConnectWrapper/QuizConnectW
 import QuizBestAnswerWrapper from "../../components/QuizBestAnswerWrapper/QuizBestAnswerWrapper";
 import QuizMulAnswerWraper from "../../components/QuizMulAnswerWrapper/QuizMulAnswerWraper";
 import QuizBlankAnswerWrapper from "../../components/QuizBlankAnswerWrapper/QuizBlankAnswerWrapper";
+import QuizOrderAnswerWrapper from "../../components/QuizOrderAnswerWrapper/QuizOrderAnswerWrapper";
+import QuizHeaderWrapper from "../../components/QuizHeaderWrapper/QuizHeaderWrapper";
+import ButtonContinueWrapper from "../../components/ButtonContinueWrapper/ButtonContinueWrapper";
 
 const QuizPage: React.FC = () => {
-  // COMMON PART
-  //
-
-  // SEPERATE PART
-  // Select best
-
-  //
-
+  // const handleButtonContinueClick = () => {
+  //   setIsAnswered(true);
+  // };
   return (
     <div className="quiz-page">
+      <QuizHeaderWrapper currentExp={23} totalExpRequired={100} />
       <div className="quiz-page__answer">
-        {/* <QuizConnectWrapper /> */}
+        <QuizConnectWrapper />
         {/* <QuizBestAnswerWrapper /> */}
         {/* <QuizMulAnswerWraper /> */}
-        <QuizBlankAnswerWrapper />
+        {/* <QuizBlankAnswerWrapper /> */}
+        {/* <QuizOrderAnswerWrapper /> */}
       </div>
+      <ButtonContinueWrapper>Tiếp tục</ButtonContinueWrapper>
     </div>
   );
 };

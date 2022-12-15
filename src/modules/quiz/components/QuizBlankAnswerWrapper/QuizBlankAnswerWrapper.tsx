@@ -84,12 +84,7 @@ const QuizBlankAnswerWrapper = () => {
         className="quiz-blank-answer__content"
         dangerouslySetInnerHTML={{ __html: content }}
       ></div>
-      <ButtonContinueWrapper
-        isCompleteAnswer={isCompleteAnswer}
-        isAnswered={isAnswered}
-        isAnsweredCorrect={isAnswerCorrect}
-        onClick={handleButtonContinueClick}
-      >
+      <ButtonContinueWrapper onClick={handleButtonContinueClick}>
         Tiếp tục
       </ButtonContinueWrapper>
     </div>

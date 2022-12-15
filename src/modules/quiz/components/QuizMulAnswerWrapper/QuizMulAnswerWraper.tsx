@@ -41,12 +41,7 @@ const QuizMulAnswerWraper: React.FC = () => {
           {item.description}
         </QuizMulAnswerOptionWrapper>
       ))}
-      <ButtonContinueWrapper
-        isCompleteAnswer={isSelectedOpotions}
-        isAnswered={isAnswered}
-        isAnsweredCorrect={!isNotSelectedCorrect}
-        onClick={handleButtonContinueClick}
-      >
+      <ButtonContinueWrapper onClick={handleButtonContinueClick}>
         Tiếp tục
       </ButtonContinueWrapper>
     </div>

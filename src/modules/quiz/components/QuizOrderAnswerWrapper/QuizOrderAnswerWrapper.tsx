@@ -202,12 +202,7 @@ const QuizOrderAnswerWrapper: React.FC = () => {
           {item.answerBlank}
         </QuizOrderAnswerOptionWrapper>
       ))}
-      <ButtonContinueWrapper
-        isCompleteAnswer={true}
-        isAnswered={isAnswered}
-        isAnsweredCorrect={isAnsweredCorrect()}
-        onClick={handleButtonContinueClick}
-      >
+      <ButtonContinueWrapper onClick={handleButtonContinueClick}>
         Tiếp tục
       </ButtonContinueWrapper>
     </div>

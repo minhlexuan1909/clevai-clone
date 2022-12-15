@@ -141,7 +141,7 @@ const QuizConnectWrapper = () => {
     });
     dispatch(setIsCompleteAnswer(isAllConnected));
     dispatch(setIsAnsweredCorrect(isConnectCorrect));
-  }, [leftAnswerList, rightAnswerList]);
+  }, [dispatch, leftAnswerList, rightAnswerList]);
 
   // Re-positioning line
   useEffect(() => {
@@ -156,7 +156,7 @@ const QuizConnectWrapper = () => {
         leftOptionNode && observer.unobserve(leftOptionNode);
       };
     }
-  }, [leftOptionNode]);
+  }, [leftOptionNode, rightOptionNode]);
   useEffect(() => {
     if (selectedLeftIndex !== null && selectedRightIndex !== null) {
       leftAnswerList[selectedLeftIndex].rightIndexConnectedTo =
@@ -181,7 +181,7 @@ const QuizConnectWrapper = () => {
             <svg
               key={item.id}
               style={{
-                left: `${leftOptionRect.right}px`,
+                left: `${leftOptionRect.right - leftOptionRect.left}px`,
               }}
               width={rightOptionRect.left - leftOptionRect.right}
             >

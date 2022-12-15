@@ -9,19 +9,6 @@
     display: flex;
     flex-wrap: wrap;
   }
-  svg {
-    position: absolute;
-    height: 100%;
-    .line--selected {
-      stroke: #45cbfa;
-    }
-    .line--correct {
-      stroke: #2acb42;
-    }
-    .line--incorrect {
-      stroke: #ff3b30;
-    }
-  }
 }
 
 .quiz-container {

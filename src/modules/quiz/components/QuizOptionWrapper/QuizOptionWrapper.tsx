@@ -21,9 +21,10 @@ const QuizOptionWrapper = React.forwardRef<QuizOptionRef, QuizOptionProps>(
       isAnswered,
       isCorrect,
       onClick,
+      ...rest
     } = props;
     return (
-      <div ref={ref} className="quiz-option-wrapper">
+      <div {...rest} ref={ref} className="quiz-option-wrapper">
         <div
           className={`${
             isSelected ? "quiz-option--selected" : "quiz-option--not-selected"

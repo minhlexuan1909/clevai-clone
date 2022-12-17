@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import ButtonContinueWrapper from "../ButtonContinueWrapper/ButtonContinueWrapper";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import QuizMulAnswerOptionWrapper from "../QuizMulAnswerOptionWrapper/QuizMulAnswerOptionWrapper";
 import "./QuizMulAnswerWrapper.scss";
+import { setIsAnsweredCorrect, setIsCompleteAnswer } from "../../redux/actions";
 
 const QuizMulAnswerWraper: React.FC = () => {
-  const [isAnswered, setIsAnswered] = useState<boolean>(false);
-  const [quizOptions, setQuizOptions] = useState([
-    { id: 1, description: "1203g", isCorrect: true, isSelected: false },
-    { id: 2, description: "1204g", isCorrect: true, isSelected: false },
-    { id: 3, description: "1205g", isCorrect: false, isSelected: false },
-    { id: 4, description: "1206g", isCorrect: false, isSelected: false },
-  ]);
+  const dispatch = useDispatch();
+
+  const isAnswered = useSelector((state: any) => state.quiz.isAnswered);
+  const [quizOptions, setQuizOptions] = useState<any>([]);
+
+  const quizAnswerList = useSelector((state: any) => state.quiz.quiz.answers);
 
   const isNotSelectedCorrect =
-    quizOptions.find((item) => item.isCorrect !== item.isSelected) !==
+    quizOptions.find((item: any) => item.isRightOption !== item.isSelected) !==
     undefined;
-  const isSelectedOpotions =
-    quizOptions.find((item) => item.isSelected === true) !== undefined;
+  const isSelectedOptions =
+    quizOptions.find((item: any) => item.isSelected === true) !== undefined;
 
   const handleSelectOption = (indexQuizOption: number) => {
     if (!isAnswered) {
@@ -25,25 +25,36 @@ const QuizMulAnswerWraper: React.FC = () => {
       setQuizOptions([...quizOptions]);
     }
   };
-  const handleButtonContinueClick = () => {
-    setIsAnswered(true);
-  };
+
+  useEffect(() => {
+    setQuizOptions(
+      quizAnswerList.map((item: any) => {
+        return { ...item, isSelected: false };
+      })
+    );
+  }, [quizAnswerList]);
+
+  useEffect(() => {
+    dispatch(setIsCompleteAnswer(isSelectedOptions));
+    dispatch(setIsAnsweredCorrect(!isNotSelectedCorrect));
+  }, [quizOptions]);
   return (
-    <div className="quiz-mul-answer quiz-container">
-      {quizOptions.map((item, index) => (
+    <div className="quiz-mul-answer quiz-option-container">
+      {quizOptions.map((item: any, index: number) => (
         <QuizMulAnswerOptionWrapper
           isTempSelected={false}
           isSelected={item.isSelected}
           isAnswered={isAnswered}
-          isCorrect={item.isCorrect}
+          isCorrect={item.isRightOption}
           onClick={() => handleSelectOption(index)}
         >
-          {item.description}
+          <div
+            dangerouslySetInnerHTML={{
+              __html: item.content,
+            }}
+          ></div>
         </QuizMulAnswerOptionWrapper>
       ))}
-      <ButtonContinueWrapper onClick={handleButtonContinueClick}>
-        Tiếp tục
-      </ButtonContinueWrapper>
     </div>
   );
 };

@@ -17,11 +17,9 @@ const middleware =
           data: GET_QUIZ_STATE.CALLING,
         });
         try {
-          console.log(action.data);
           const getQuizByIdResponse = await getQuizByLearningObjectIdApi(
             action.data
           );
-          console.log("after api");
           dispatch({
             type: ACTION_TYPES.SET_GET_QUIZ_STATE,
             data: GET_QUIZ_STATE.SUCCESS,

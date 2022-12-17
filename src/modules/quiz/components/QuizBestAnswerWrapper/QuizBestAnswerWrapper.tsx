@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsCompleteAnswer, setIsAnsweredCorrect } from "../../redux/actions";
 import ButtonContinueWrapper from "../ButtonContinueWrapper/ButtonContinueWrapper";
 import QuizBestAnswerOptionWrapper from "../QuizBestAnswerOptionWrapper/QuizBestAnswerOptionWrapper";
 import "./QuizBestAnswerWrapper.scss";
 
 const QuizBestAnswerWrapper = () => {
-  const [isAnswered, setIsAnswered] = useState<boolean>(false);
+  const dispatch = useDispatch();
+  const isAnswered = useSelector((state: any) => state.quiz.isAnswered);
   const [selectedOption, setSelectedOption] = useState<null | number>(null);
-  const isOptionSelected = selectedOption !== null;
 
   const [isSelectedCorrect, setIsSelectedCorrect] = useState<boolean>(false);
-  const quizOptions = [
-    { id: 1, description: "1203g", isCorrect: true },
-    { id: 2, description: "1204g", isCorrect: false },
-    { id: 3, description: "1205g", isCorrect: false },
-    { id: 4, description: "1206g", isCorrect: false },
-  ];
+  const quizOptions = useSelector((state: any) => state.quiz.quiz.answers);
 
   const handleSelectOption = (
     idQuizOption: number,
@@ -22,30 +19,32 @@ const QuizBestAnswerWrapper = () => {
   ) => {
     if (!isAnswered) {
       setSelectedOption(idQuizOption);
-      setIsSelectedCorrect(isQuizOptionCorrect);
+      dispatch(setIsAnsweredCorrect(isQuizOptionCorrect));
     }
   };
-
-  const handleButtonContinueClick = () => {
-    setIsAnswered(true);
-  };
+  useEffect(() => {
+    if (selectedOption) {
+      dispatch(setIsCompleteAnswer(true));
+    }
+  }, [selectedOption]);
   return (
-    <div className="quiz-best-answer quiz-container">
-      {quizOptions.map((quiz) => (
+    <div className="quiz-best-answer quiz-option-container">
+      {quizOptions.map((quiz: any) => (
         <QuizBestAnswerOptionWrapper
           key={quiz.id}
           isTempSelected={false}
           isSelected={quiz.id === selectedOption}
           isAnswered={isAnswered}
-          isCorrect={quiz.isCorrect}
-          onClick={() => handleSelectOption(quiz.id, quiz.isCorrect)}
+          isCorrect={quiz.isRightOption}
+          onClick={() => handleSelectOption(quiz.id, quiz.isRightOption)}
         >
-          {quiz.description}
+          <div
+            dangerouslySetInnerHTML={{
+              __html: quiz.content,
+            }}
+          ></div>
         </QuizBestAnswerOptionWrapper>
       ))}
-      <ButtonContinueWrapper onClick={handleButtonContinueClick}>
-        Tiếp tục
-      </ButtonContinueWrapper>
     </div>
   );
 };

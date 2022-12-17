@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "src/modules/common/components/Button/Button";
 import "./ButtonContinueWrapper.css";
 import {
   setIsAnswered,
   updateQuizStatus,
   getQuizByLearningObjectId,
+  setIsAnsweredCorrect,
+  setIsCompleteAnswer,
 } from "../../redux/actions";
 // import { IRootState } from "../../../base/redux/store";
 import { UPDATE_QUIZ_STATUS_STATE } from "../../utils/constants";
+import { useLocation, useSearchParams } from "react-router-dom";
+import Button from "src/modules/common/components/Button/Button";
 
 type Props = {
   children?: string;
@@ -18,6 +21,10 @@ type Props = {
 
 const ButtonContinueWrapper: React.FC<Props> = (props) => {
   const { children, incorrectDelaySecond = 15, onClick = () => {} } = props;
+
+  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const learningObjectId = searchParams.get("learningObjectId");
 
   const dispatch = useDispatch();
 
@@ -50,7 +57,9 @@ const ButtonContinueWrapper: React.FC<Props> = (props) => {
       // );
     } else {
       dispatch(setIsAnswered(false));
-      // dispatch(getQuizByLearningObjectId(1));
+      dispatch(setIsAnsweredCorrect(false));
+      dispatch(setIsCompleteAnswer(false));
+      // dispatch(getQuizByLearningObjectId(learningObjectId));
     }
   };
 

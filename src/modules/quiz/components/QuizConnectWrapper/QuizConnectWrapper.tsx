@@ -121,7 +121,7 @@ const QuizConnectWrapper = () => {
   };
   useEffect(() => {
     wrapperStyleRef.current = getComputedStyle(
-      document.querySelector(".quiz-container")!
+      document.querySelector(".quiz-option-container")!
     );
   }, []);
   useEffect(() => {
@@ -172,7 +172,7 @@ const QuizConnectWrapper = () => {
     }
   }, [selectedLeftIndex, selectedRightIndex, leftAnswerList, rightAnswerList]);
   return (
-    <div className="quiz-connect quiz-container">
+    <div className="quiz-connect quiz-option-container">
       <>
         {leftAnswerList.map((item, index) => {
           return item.rightIndexConnectedTo !== null &&

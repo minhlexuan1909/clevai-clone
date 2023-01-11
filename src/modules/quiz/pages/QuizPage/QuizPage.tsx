@@ -9,6 +9,7 @@ import QuizBlankAnswerWrapper from "../../components/QuizBlankAnswerWrapper/Quiz
 import QuizOrderAnswerWrapper from "../../components/QuizOrderAnswerWrapper/QuizOrderAnswerWrapper";
 import QuizHeaderWrapper from "../../components/QuizHeaderWrapper/QuizHeaderWrapper";
 import ButtonContinueWrapper from "../../components/ButtonContinueWrapper/ButtonContinueWrapper";
+import QuizConnectDragWrapper from "../../components/QuizConnectDragWrapper/QuizConnectDragWrapper";
 
 const QuizPage: React.FC = () => {
   // const handleButtonContinueClick = () => {
@@ -18,7 +19,8 @@ const QuizPage: React.FC = () => {
     <div className="quiz-page">
       <QuizHeaderWrapper currentExp={23} totalExpRequired={100} />
       <div className="quiz-page__answer">
-        <QuizConnectWrapper />
+        <QuizConnectDragWrapper />
+        {/* <QuizConnectWrapper /> */}
         {/* <QuizBestAnswerWrapper /> */}
         {/* <QuizMulAnswerWraper /> */}
         {/* <QuizBlankAnswerWrapper /> */}

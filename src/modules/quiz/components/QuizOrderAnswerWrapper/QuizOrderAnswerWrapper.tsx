@@ -1,6 +1,12 @@
 import "./QuizOrderAnswerWrapper.scss";
 
-import React, { useEffect, useMemo, useReducer, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useReducer,
+  useState,
+} from "react";
 
 import QuizOrderAnswerOptionWrapper from "../QuizOrderAnswerOptionWrapper/QuizOrderAnswerOptionWrapper";
 import ButtonContinueWrapper from "../ButtonContinueWrapper/ButtonContinueWrapper";
@@ -121,39 +127,96 @@ const QuizOrderAnswerWrapper: React.FC = () => {
   };
 
   const handleDragStart = (e: any) => {
-    e.stopPropagation();
-    e.dataTransfer.setDragImage(image, 0, 0);
+    // e.stopPropagation();
+
+    console.log("Hi");
+    // remove default drag ghost
+    e.dataTransfer.effectedAllowed = "move";
+    e.dataTransfer.setDragImage(image, 50000, 50000);
+
+    // custom drag ghost
+    let ghostNode = e.target.cloneNode(true);
+
+    ghostNode.style.position = "absolute";
+
+    // show ghost add mouse pointer position
+    ghostNode.style.top = e.pageY - e.target.offsetHeight / 2 + "px";
+    ghostNode.style.left = e.pageX - e.target.offsetWidth / 2 + "px";
+
+    // add width height to ghost node
+    ghostNode.style.height = e.target.offsetHeight + "px";
+    ghostNode.style.width = e.target.offsetWidth + "px";
+
+    // add some style
+    ghostNode.style.opacity = "0.8";
+    ghostNode.style.pointerEvents = "none";
+
+    // add id
+    ghostNode.id = "ghostNode";
+
+    document.body.prepend(ghostNode);
+
+    // identify selected item
+    // itemRef.current.classList.add("dragstart");
+
+    // if (props.onDragStart) {
+    //   props.onDragStart(props.index);
+    // }
+
+    // e.dataTransfer.setDragImage(image, 0, 0);
   };
   const handleDragEnter = (e: any, index: number) => {
-    e.preventDefault();
-    e.stopPropagation();
-    dispatch({
-      type: SET_DROP_DEPTH,
-      dropDepth: data[index] + 1,
-      index: index,
-    });
+    // e.preventDefault();
+    // e.stopPropagation();
+    // dispatch({
+    //   type: SET_DROP_DEPTH,
+    //   dropDepth: data[index] + 1,
+    //   index: index,
+    // });
   };
   // Apply pointer-events: none to children to prevent bubbling
   const handleDragLeave = (e: any, index: number) => {
-    e.preventDefault();
-    e.stopPropagation();
-    dispatch({
-      type: SET_DROP_DEPTH,
-      dropDepth: data[index] - 1,
-      index: index,
-    });
-    if (data.dropDepth > 0) return;
-    setUnderDraggedOptionIndex(null);
+    // e.preventDefault();
+    // e.stopPropagation();
+    // dispatch({
+    //   type: SET_DROP_DEPTH,
+    //   dropDepth: data[index] - 1,
+    //   index: index,
+    // });
+    // if (data.dropDepth > 0) return;
+    // setUnderDraggedOptionIndex(null);
     // dispatch({ type: "SET_IN_DROP_ZONE", inDropZone: false });
+  };
+
+  const handleDrag = (e: any) => {
+    let ghostNode: HTMLDivElement | null = document.querySelector("#ghostNode");
+    console.log(e.pageY);
+    const ePageY = e.pageY;
+    const ePageX = e.pageX;
+    const elOffsetHeight = e.target.offsetHeight;
+    const elOffsetWidth = e.target.offsetWidth;
+    const top = ePageY - elOffsetHeight / 2;
+    const left = ePageX - elOffsetWidth / 2;
+
+    // if (ghostNode) {
+    // ghostNode!.style.top = ePageY - elOffsetHeight / 2 + "px";
+    // ghostNode!.style.left = ePageX - elOffsetWidth / 2 + "px";
+    ghostNode!.style.cssText += "; top: " + top + "px; left: " + left + "px";
+    // }
   };
   const handleDragOver = (e: any, index: number) => {
     // Avoid onDrop not work
     e.preventDefault();
-    setUnderDraggedOptionIndex(index);
+    // setUnderDraggedOptionIndex(index);
   };
   const handleDragEnd = (e: any) => {
     setUnderDraggedOptionIndex(null);
     setMovingOptionIndex(null);
+
+    // remove ghost node
+    // document.querySelector("#ghostNode")!.remove();
+    // remove selected item style
+    // itemRef.current.classList.remove("dragstart");
   };
   const handleDrop = (e: any, index: number) => {
     setUnderDraggedOptionIndex(null);
@@ -170,7 +233,7 @@ const QuizOrderAnswerWrapper: React.FC = () => {
     setMovingOptionIndex(null);
   };
   const handleOptionHold = (index: number) => {
-    setMovingOptionIndex(index);
+    // setMovingOptionIndex(index);
   };
   const handleButtonContinueClick = () => {
     setIsAnswered(true);
@@ -182,7 +245,9 @@ const QuizOrderAnswerWrapper: React.FC = () => {
     <div className="quiz-order-answer quiz-container">
       {optionList.map((item, index) => (
         <QuizOrderAnswerOptionWrapper
+          key={item.id}
           onDrop={(e) => handleDrop(e, index)}
+          onDrag={(e) => handleDrag(e)}
           onDragStart={(e) => handleDragStart(e)}
           onDragOver={(e) => handleDragOver(e, index)}
           onDragEnter={(e) => handleDragEnter(e, index)}

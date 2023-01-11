@@ -1,0 +1,534 @@
+$levelColor1: #64dcc3;
+$levelColor2: #45cbfa;
+$levelColor3: #c382ff;
+$levelColor4: #2b70c9;
+$levelColor5: #f07882;
+$colorActive: #ff8805;
+$colorActiveHover: #faa541;
+$bgBtnActive: #ff8805;
+$bgBtnHover: #faa541;
+$bgBtnInactive: #dfdfdf;
+$bgBtnActiveShadow: #d36e00;
+$bgBtnHoverShadow: #e2923a;
+$bgBtnInactiveShadow: #bababa;
+
+//colors
+$white-color: #fff;
+$dark-charcoal-color: #333;
+$dark-orange-color: #ff8805;
+$quick-silver-color: #9d9d9d;
+$colorBtnActive: #fff;
+$colorDefault: #333;
+$desktopWidth: 1366px;
+$desktopWidthLt: 1365px;
+$desktopWidthLg: 1500px;
+$desktopLgWidth: 1920px;
+$tabletWidth: 900px;
+$tabletWidthMaxLt: 1198px;
+$tabletWidthMax: 1200px;
+$moreThantabletWidthMax: 1199px;
+$tabletWidth1: 768px;
+$mobileWidth: 767px;
+$mobileWidthGt: 768px;
+$mobileWidthLt: 769px;
+
+.font-30-bold {
+  font: 30px/34px "Bold SF Compact Rounded", sans-serif !important;
+}
+.font-30-semibold {
+  font: 30px/34px "Semibold SF Compact Rounded", sans-serif !important;
+}
+.font-30-medium {
+  font: 30px/34px "Medium SF Compact Rounded", sans-serif !important;
+}
+.font-30-regular {
+  font: 30px/34px "Regular SF Compact Rounded", sans-serif !important;
+}
+.font-26-bold {
+  font: 26px/30px "Bold SF Compact Rounded", sans-serif !important;
+}
+.font-26-semibold {
+  font: 26px/30px "Semibold SF Compact Rounded", sans-serif !important;
+}
+.font-26-regular {
+  font: 26px/30px "Regular SF Compact Rounded", sans-serif !important;
+}
+.font-26-medium {
+  font: 26px/30px "Medium SF Compact Rounded", sans-serif !important;
+}
+.font-24-bold {
+  font: 24px/28px "Bold SF Compact Rounded", sans-serif !important;
+}
+.font-24-semibold {
+  font: 24px/28px "Semibold SF Compact Rounded", sans-serif !important;
+}
+.font-24-regular {
+  font: 24px/28px "Regular SF Compact Rounded", sans-serif !important;
+}
+.font-24-medium {
+  font: 24px/28px "Medium SF Compact Rounded", sans-serif !important;
+}
+.font-20-bold {
+  font: 20px/24px "Bold SF Compact Rounded", sans-serif !important;
+}
+.font-20-semibold {
+  font: 20px/24px "Semibold SF Compact Rounded", sans-serif !important;
+}
+.font-20-regular {
+  font: 20px/24px "Regular SF Compact Rounded", sans-serif !important;
+}
+.font-20-medium {
+  font: 20px/24px "Medium SF Compact Rounded", sans-serif !important;
+}
+.font-18-bold {
+  font: 18px/22px "Bold SF Compact Rounded", sans-serif !important;
+}
+.font-18-semibold {
+  font: 18px/22px "Semibold SF Compact Rounded", sans-serif !important;
+}
+.font-18-regular {
+  font: 18px/22px "Regular SF Compact Rounded", sans-serif !important;
+}
+.font-18-medium {
+  font: 18px/22px "Medium SF Compact Rounded", sans-serif !important;
+}
+.font-16-bold {
+  font: 16px/20px "Bold SF Compact Rounded", sans-serif !important;
+}
+.font-16-semibold {
+  font: 16px/20px "Semibold SF Compact Rounded", sans-serif !important;
+}
+.font-16-regular {
+  font: 16px/20px "Regular SF Compact Rounded", sans-serif !important;
+}
+.font-16-medium {
+  font: 16px/20px "Medium SF Compact Rounded", sans-serif !important;
+}
+.font-14-bold {
+  font: 14px/18px "Bold SF Compact Rounded", sans-serif !important;
+}
+.font-14-semibold {
+  font: 14px/18px "Semibold SF Compact Rounded", sans-serif !important;
+}
+.font-14-regular {
+  font: 14px/18px "Regular SF Compact Rounded", sans-serif !important;
+}
+.font-14-medium {
+  font: 14px/18px "Medium SF Compact Rounded", sans-serif !important;
+}
+.font-12-bold {
+  font: 12px/16px "Bold SF Compact Rounded", sans-serif !important;
+}
+.font-12-semibold {
+  font: 12px/16px "Semibold SF Compact Rounded", sans-serif !important;
+}
+.font-12-regular {
+  font: 12px/16px "Regular SF Compact Rounded", sans-serif !important;
+}
+.font-12-medium {
+  font: 12px/16px "Medium SF Compact Rounded", sans-serif !important;
+}
+
+@mixin font-30-bold {
+  font: 30px/34px "Bold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-30-semibold {
+  font: 30px/34px "Semibold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-30-regular {
+  font: 30px/34px "Regular SF Compact Rounded", sans-serif !important;
+}
+
+@mixin font-30-medium {
+  font: 30px/34px "Medium SF Compact Rounded", sans-serif !important;
+}
+
+@mixin font-26-bold {
+  font: 26px/30px "Bold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-26-semibold {
+  font: 26px/30px "Semibold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-26-regular {
+  font: 26px/30px "Regular SF Compact Rounded", sans-serif !important;
+}
+@mixin font-26-medium {
+  font: 26px/30px "Medium SF Compact Rounded", sans-serif !important;
+}
+@mixin font-24-bold {
+  font: 24px/28px "Bold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-24-semibold {
+  font: 24px/28px "Semibold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-24-regular {
+  font: 24px/28px "Regular SF Compact Rounded", sans-serif !important;
+}
+@mixin font-24-medium {
+  font: 24px/28px "Medium SF Compact Rounded", sans-serif !important;
+}
+@mixin font-20-bold {
+  font: 20px/24px "Bold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-20-semibold {
+  font: 20px/24px "Semibold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-20-regular {
+  font: 20px/24px "Regular SF Compact Rounded", sans-serif !important;
+}
+@mixin font-20-medium {
+  font: 20px/24px "Medium SF Compact Rounded", sans-serif !important;
+}
+@mixin font-18-bold {
+  font: 18px/22px "Bold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-18-semibold {
+  font: 18px/22px "Semibold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-18-regular {
+  font: 18px/22px "Regular SF Compact Rounded", sans-serif !important;
+}
+@mixin font-18-medium {
+  font: 18px/22px "Medium SF Compact Rounded", sans-serif !important;
+}
+@mixin font-16-bold {
+  font: 16px/20px "Bold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-16-semibold {
+  font: 16px/20px "Semibold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-16-regular {
+  font: 16px/20px "Regular SF Compact Rounded", sans-serif !important;
+}
+@mixin font-16-medium {
+  font: 16px/20px "Medium SF Compact Rounded", sans-serif !important;
+}
+@mixin font-14-bold {
+  font: 14px/18px "Bold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-14-semibold {
+  font: 14px/18px "Semibold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-14-regular {
+  font: 14px/18px "Regular SF Compact Rounded", sans-serif !important;
+}
+@mixin font-14-medium {
+  font: 14px/18px "Medium SF Compact Rounded", sans-serif !important;
+}
+@mixin font-12-bold {
+  font: 12px/16px "Bold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-12-semibold {
+  font: 12px/16px "Semibold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-12-regular {
+  font: 12px/16px "Regular SF Compact Rounded", sans-serif !important;
+}
+@mixin font-12-medium {
+  font: 12px/16px "Medium SF Compact Rounded", sans-serif !important;
+}
+
+@mixin font-28-bold {
+  font: 28px/32px "Bold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-28-semibold {
+  font: 28px/32px "Semibold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-28-regular {
+  font: 28px/32px "Regular SF Compact Rounded", sans-serif !important;
+}
+@mixin font-28-medium {
+  font: 28px/32px "Medium SF Compact Rounded", sans-serif !important;
+}
+
+@mixin font-32-bold {
+  font: 32px/36px "Bold SF Compact Rounded", sans-serif !important;
+}
+
+@mixin font-32-semibold {
+  font: 32px/36px "Semibold SF Compact Rounded", sans-serif !important;
+}
+
+@mixin font-36-bold {
+  font: 36px/40px "Bold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-36-semibold {
+  font: 36px/40px "Semibold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-36-regular {
+  font: 36px/40px "Regular SF Compact Rounded", sans-serif !important;
+}
+@mixin font-36-medium {
+  font: 36px/40px "Medium SF Compact Rounded", sans-serif !important;
+}
+
+@mixin font-47-semibold {
+  font: 47px/51px "Semibold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-47-regular {
+  font: 47px/51px "Regular SF Compact Rounded", sans-serif !important;
+}
+@mixin font-47-medium {
+  font: 47px/51px "Medium SF Compact Rounded", sans-serif !important;
+}
+
+@mixin font-40-semibold {
+  font: 40px/44px "Semibold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-40-regular {
+  font: 40px/44px "Regular SF Compact Rounded", sans-serif !important;
+}
+@mixin font-40-medium {
+  font: 40px/44px "Medium SF Compact Rounded", sans-serif !important;
+}
+
+@mixin font-27-semibold {
+  font: 27px/31px "Semibold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-27-regular {
+  font: 27px/31px "Regular SF Compact Rounded", sans-serif !important;
+}
+@mixin font-47-medium {
+  font: 27px/31px "Medium SF Compact Rounded", sans-serif !important;
+}
+
+@mixin font-8-semibold {
+  font: 8px/12px "Semibold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-8-regular {
+  font: 8px/12px "Regular SF Compact Rounded", sans-serif !important;
+}
+@mixin font-8-medium {
+  font: 8px/12px "Medium SF Compact Rounded", sans-serif !important;
+}
+
+@mixin font-10-semibold {
+  font: 10px/14px "Semibold SF Compact Rounded", sans-serif !important;
+}
+@mixin font-10-regular {
+  font: 10px/14px "Regular SF Compact Rounded", sans-serif !important;
+}
+@mixin font-10-medium {
+  font: 10px/14px "Medium SF Compact Rounded", sans-serif !important;
+}
+
+.level-color-1 {
+  color: $levelColor1;
+}
+.level-color-2 {
+  color: $levelColor2;
+}
+.level-color-3 {
+  color: $levelColor3;
+}
+.level-color-4 {
+  color: $levelColor4;
+}
+.level-color-5 {
+  color: $levelColor5;
+}
+.level-bg-1 {
+  background: $levelColor1;
+}
+.level-bg-2 {
+  background: $levelColor2;
+}
+.level-bg-3 {
+  background: $levelColor3;
+}
+.level-bg-4 {
+  background: $levelColor4;
+}
+.level-bg-5 {
+  background: $levelColor5;
+}
+.level-border-0 {
+  border: 4px solid #dfdfdf;
+}
+.level-border-1 {
+  border: 4px solid $levelColor1;
+}
+.level-border-2 {
+  border: 4px solid $levelColor2;
+}
+.level-border-3 {
+  border: 4px solid $levelColor3;
+}
+.level-border-4 {
+  border: 4px solid $levelColor4;
+}
+.level-border-5 {
+  border: 4px solid $levelColor5;
+}
+.level-border-6 {
+  border: 4px solid #ffcb05;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  letter-spacing: 0px;
+}
+@media (max-width: 1365px) {
+  .rooms {
+    padding-bottom: 0;
+  }
+}
+
+@mixin btn {
+  @include font-16-semibold;
+  cursor: pointer;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid $bgBtnActive;
+  color: #fff;
+  text-align: center;
+  background: $bgBtnActive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:not(.active):not(.disabled):hover {
+    background: $bgBtnHover;
+    border: 1px solid $bgBtnHover;
+  }
+  &.disabled {
+    background: $bgBtnInactive;
+    border: 1px solid $bgBtnInactive;
+    cursor: default;
+  }
+  @media (max-width: $mobileWidth) {
+    height: 44px;
+  }
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  margin: 0px;
+  padding: 0px;
+}
+input {
+  outline: none;
+}
+
+@keyframes spinIcon {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.common-icon-loading-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  margin: 30px 0;
+  flex-direction: column;
+  @media (max-width: $tabletWidthMax) {
+    padding: 0px 0;
+  }
+  .common-icon-loading {
+    width: 30px;
+    height: 30px;
+    animation-name: spinIcon;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+}
+
+.common-icon-error-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 0;
+  margin: 30px 0;
+  flex-direction: column;
+  @media (max-width: $tabletWidthMax) {
+    padding: 0px 0;
+  }
+  .common-icon-error-content {
+    text-align: center;
+    svg {
+      .a {
+        fill: #efefef;
+      }
+      .b {
+        fill: #fff !important;
+      }
+      .c {
+        fill: #ffe0b5;
+      }
+      .d {
+        fill: #ff8c05;
+      }
+    }
+    h5 {
+      @include font-14-medium;
+      color: #9d9d9d;
+      margin: 12px 0 0 0;
+    }
+    p {
+      @include font-12-regular;
+      color: #9d9d9d;
+      margin: 4px 0 0 0;
+      height: 16px;
+    }
+    button {
+      margin: 18px auto;
+      @include btn;
+      width: 116px;
+      margin-bottom: 0;
+      @media (max-width: $mobileWidth) {
+        margin: 6px auto;
+      }
+    }
+  }
+  .common-icon-error {
+    width: 94px;
+    height: 60px;
+    @media (max-width: $mobileWidth) {
+      width: 46px;
+      height: 30px;
+    }
+  }
+}
+
+.ant-tooltip {
+  @media (max-width: $mobileWidth) {
+    display: none;
+  }
+}
+
+@media (min-width: $desktopWidth) {
+  .ant-modal-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.hidden-xs {
+  @media (max-width: $mobileWidth) {
+    display: none !important;
+  }
+}
+.visible-xs {
+  @media (min-width: $mobileWidth) {
+    display: none !important;
+  }
+}

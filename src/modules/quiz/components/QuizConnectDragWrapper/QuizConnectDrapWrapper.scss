@@ -1,0 +1,19 @@
+.quiz-connect-drag {
+  width: 100%;
+  display: flex;
+  &__pair-list {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    row-gap: 30px;
+  }
+  &__option-pair {
+    display: flex;
+    width: 100%;
+    column-gap: 100px;
+    transition: column-gap 0.3s;
+    &--connected {
+      column-gap: 0;
+    }
+  }
+}

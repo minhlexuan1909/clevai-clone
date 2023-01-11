@@ -10,6 +10,7 @@ interface QuizOrderOptionProps extends QuizOptionProps {
   isMoving: boolean;
   isUnderDraggedOption: boolean;
   onDrop?: DragEventHandler<HTMLDivElement>;
+  onDrag?: DragEventHandler<HTMLDivElement>;
   onDragStart?: DragEventHandler<HTMLDivElement>;
   onDragOver?: DragEventHandler<HTMLDivElement>;
   onDragEnter?: DragEventHandler<HTMLDivElement>;
@@ -30,6 +31,7 @@ const QuizOrderAnswerOptionWrapper: React.FC<QuizOrderOptionProps> = (
     isMoving,
     isUnderDraggedOption,
     onClick,
+    onDrag,
     onDragStart = () => {},
     onDragEnter = () => {},
     onDragLeave = () => {},
@@ -42,6 +44,7 @@ const QuizOrderAnswerOptionWrapper: React.FC<QuizOrderOptionProps> = (
 
   return (
     <div
+      onDrag={onDrag}
       onDragStart={onDragStart}
       onDragEnter={onDragEnter}
       onDragLeave={onDragLeave}

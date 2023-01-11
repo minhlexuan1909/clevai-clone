@@ -1,0 +1,106 @@
+.quiz-connect-drag-option {
+  width: 100%;
+  position: relative;
+  &:hover {
+    background: #e5e5e5;
+  }
+  &:not(&--dragging) {
+    pointer-events: unset;
+  }
+  &.quiz-connect-drag-left-option {
+    pointer-events: none;
+  }
+  &:hover:not(&--dragging, &--selected, &--correct, &--incorrect)
+    &__right-triangle {
+    background: #e5e5e5;
+  }
+  &--stopped {
+    transition: transform 0.5s;
+    // transition: all 0.3s, transform 0;
+  }
+  &--dragging {
+    // pointer-events: none;
+
+    & .quiz-option {
+      color: #fcba03;
+      border: 1px solid #fcba03;
+      background: #ffebb3;
+    }
+  }
+
+  &--right-dragging {
+    z-index: 999;
+  }
+
+  .quiz-option {
+    border-radius: 0;
+  }
+
+  &__triangle {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+
+    width: 42px;
+    height: 42px;
+    background: #fff;
+    border-right: 1px solid #bababa;
+    border-bottom: 1px solid #bababa;
+    transform: translateY(-50%) rotate(135deg);
+  }
+  &__left-triangle {
+    right: -22px;
+
+    &--dragging {
+      background: #fff;
+      border-right: 1px solid #fcba03;
+      border-bottom: 1px solid #fcba03;
+    }
+  }
+
+  &__right-triangle {
+    left: -22px;
+    cursor: pointer;
+
+    &--dragging {
+      background: #ffebb3;
+      border-right: 1px solid #fcba03;
+      border-bottom: 1px solid #fcba03;
+    }
+    &--selected {
+      background: #daf2fa;
+      border-right: 1px solid #45cbfa;
+      border-bottom: 1px solid #45cbfa;
+    }
+    &--correct {
+      background: #cefdd5;
+      border-right: 1px solid #2acb42;
+      border-bottom: 1px solid #2acb42;
+    }
+    &--incorrect {
+      background: #ffcfcc;
+      border-right: 1px solid #ff3b30;
+      border-bottom: 1px solid #ff3b30;
+    }
+  }
+  &:nth-child(odd) {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+    & .quiz-option {
+      border-right-color: transparent;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+  }
+  &:nth-child(even) {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    & .quiz-option {
+      border-left-color: transparent;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+  }
+}
